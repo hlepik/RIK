@@ -1,0 +1,91 @@
+@model DAL.App.DTO.Company
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div>
+     <div class="main-title">
+         <p class="main-headers">
+               Ettevõte info
+         </p>
+     </div>
+     <div  class="cropped" >
+            <img src="~/libled.jpg"  >
+     </div>
+</div>
+
+<div class="create-box">
+    <form asp-action="Edit">
+        <dl class="row">
+            <dt class="col-sm-12">
+                Ettevõtte info
+            </dt>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="EventId" />
+
+            <dt class="col-sm-4">
+                <label asp-for="CompanyName" class="control-label"></label>:
+            </dt>
+            <dd class = "col-sm-6">
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+
+            </dd>
+            <dt class = "col-sm-4">
+                <label asp-for="RegisterCode" class="control-label"></label>:
+            </dt>
+            <dd class = "col-sm-6">
+                <input asp-for="RegisterCode" class="form-control" />
+                <span asp-validation-for="RegisterCode" class="text-danger"></span>
+
+            </dd>
+            <dt class = "col-sm-4">
+                <label asp-for="PeopleCount" class="control-label"></label>:
+            </dt>
+            <dd class = "col-sm-6">
+                <input asp-for="PeopleCount" min="1" class="form-control" />
+                <span asp-validation-for="PeopleCount" class="text-danger"></span>
+
+            </dd>
+            <dt class = "col-sm-4">
+                <label asp-for="PaymentType" class="control-label"></label>:
+            </dt>
+
+            <dd class = "col-sm-6">
+                <select class="form-control" asp-for="PaymentType">
+                    <option value="0">Sularaha</option>
+                    <option value="1">Ülekanne</option>
+                </select>
+
+                <span asp-validation-for="PaymentType" class="text-danger"></span>
+
+            </dd>
+
+            <dt class = "col-sm-4">
+                <label asp-for="Comment" class="control-label"></label>:
+            </dt>
+            <dd class = "col-sm-6">
+                <textarea  asp-for="Comment" class="form-control" ></textarea>
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </dd>
+
+            <dt class = "col-sm-12">
+
+                <div class="form-group">
+                    <a asp-action="Index"  asp-route-id="@Model.EventId" class="btn btn-secondary">Tagasi</a>
+                    <input type="submit" value="Salvesta" class="btn btn-primary" />
+                </div>
+
+            </dt>
+
+        </dl>
+
+    </form>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

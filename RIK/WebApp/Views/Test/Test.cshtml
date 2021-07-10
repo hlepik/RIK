@@ -1,0 +1,43 @@
+@model WebApp.ViewModels.Test.TestViewModel
+
+@{
+    ViewData["Title"] = "Test";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault()!.EventName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Events.FirstOrDefault()!.EventDate)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Events.FirstOrDefault()!.Location)
+            </th>
+
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Events) {
+        <tr>
+            <td>
+                @item.EventName
+            </td>
+
+            <td>
+                @item.EventDate
+            </td>
+            <td>
+                @item.Location
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

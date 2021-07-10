@@ -1,0 +1,187 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: gray;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+  font-size: 0.8rem;
+}
+.btn-secondary{
+  font-size: 0.8rem;
+}
+
+#jobu {
+  background-color: white;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background-color: #EDF3F5;
+}
+.header {
+  width: 70%;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  white-space: nowrap;
+  width: 100%;
+  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  line-height: 1rem; /* Vertically center the text there */
+}
+
+#main-text {
+  color: white;
+  padding: 2rem 2.5rem;
+
+}
+#main-background {
+  background-color: #1855B9;
+
+}
+
+.main-headers{
+  color: white;
+  padding-top: 0.9rem;
+  height: 3rem;
+  background: #1855B9;
+  text-align: center;
+}
+
+#deleteButton{
+  color: red;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  float: left;
+
+}
+.container {
+  width: 70%;
+
+}
+.column {
+  float: left;
+  width: 33%;
+}
+
+.event-box {
+  background-color: white;
+  color: gray;
+  font-size: 0.7rem;
+  padding: 0.5rem;
+  height: 100%;
+  font-weight: lighter;
+  width: 50%;
+}
+
+.create-box {
+  background-color: white;
+  color: black;
+  font-size: 0.6rem;
+  padding: 0.5rem;
+  height: 100%;
+  font-weight: lighter;
+}
+
+.cropped img{
+
+  position: absolute;
+  clip: rect(0px,37rem, 3rem,0px);
+
+}
+.main-box {
+  background-color: white;
+}
+
+img {
+  max-width: 100%;
+}
+
+.formBox {
+  padding-left: 10rem;
+  padding-right: 20%;
+  align-content: center;
+}
+
+.form-control{
+  font-size: 0.5rem;
+}
+.col-sm-5{
+  padding-left: 0px;
+  float: left;
+}
+
+.col-sm-4 {
+  padding-left: 10%;
+}
+.radioButtons{
+  padding-left: 10%;
+}
+.col-sm-12 {
+  padding-left: 10%;
+  font-size: 0.8rem;
+  color: #1855B9;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+
+}
+  
+  

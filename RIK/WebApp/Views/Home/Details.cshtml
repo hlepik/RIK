@@ -1,0 +1,94 @@
+@model ParticipantsViewModel
+
+<div>
+     <div class="main-title">
+         <p class="main-headers">
+               Osavõtjad
+         </p>
+     </div>
+     <div  class="cropped" >
+            <img src="~/libled.jpg"  >
+     </div>
+</div>
+
+<dt class="create-box">
+
+<dl class="row">
+    <dt class="col-sm-12">
+        Osavõtjad
+    </dt>
+     <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Event!.EventName):
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Event!.EventName)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Event!.EventDate):
+        </dt>
+        <dd class = "col-sm-6">
+
+            @Html.DisplayFor(model => model.Event!.EventDate)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Event!.Location):
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Event!.Location)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Event!.Comment):
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Event!.Comment)
+        </dd>
+        <dt class = "col-sm-4">
+            Osavõtjad:
+        </dt>
+        @{var count = 1;}
+        @foreach (var item in Model.Participants!)
+        {
+            @if (count > 1)
+            {
+                <dt class = "col-sm-4">
+                </dt>
+            }
+            <div class="col-sm-8" >
+                <div style="float: left; width: 40%">
+                      @count. @Html.DisplayFor(modelItem => item!.Name)
+                      @{ count++; }
+
+                </div>
+                <div style="float: left; width: 30%">
+                    @Html.DisplayFor(modelItem => item!.Code)
+                </div>
+                 <div style="width: 10%; float: left">
+                    <a asp-action="Participants" asp-route-id="@item!.Id">Vaata</a>
+                </div>
+                <div style="width: 5%; float: left">
+
+                    <form asp-action="DeleteConfirmed" asp-route-id="@item!.Id" asp-route-eventId="@Model.Event!.Id"
+                          onclick="return confirm('Olete kindel, et soovite inimest/ettevõtet eemaldada?')">
+                        <button id="deleteButton" type="submit">
+                            <a class="fa fa-trash"></a>
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        }
+        @if (Model.Event!.EventDate < DateTime.Today)
+        {
+            <dt class = "col-sm-12">
+
+                <div class="form-group" style="padding-top: 2rem">
+                    <a asp-action="Index" class="btn btn-secondary">Tagasi</a>
+                </div>
+
+            </dt>
+        }
+
+</dl>
+</dt>

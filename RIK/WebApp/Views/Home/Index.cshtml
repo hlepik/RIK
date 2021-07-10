@@ -1,0 +1,95 @@
+﻿@model AllEventsViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+ <div>
+     <div style="height:12rem; width: 50%; float: left; background: #1855B9;">
+         <p id="main-text">
+             Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit.
+             Quisque posuere ornare ante at mattis.
+            Donec tristique mi mi, iaculis dapibus
+            lacus lacinia nec.
+         </p>
+     </div>
+     <div class="main-img">
+         <img src="~/pilt.jpg">
+     </div>
+</div>
+
+<div style="padding-top: 1rem; ">
+
+     @{var count = 1;}
+        @{var eventCount = 1;}
+
+         <div style="width: 50%;  float: left; ">
+             <div class="main-headers">
+                 Tulevased üritused
+             </div>
+             <div class="create-box">
+                 <div class="row">
+                     @foreach (var item in Model.ComingEvents!)
+                     {
+                         <div class="event-name">
+                             @count. @Html.DisplayFor(modelItem => item!.EventName)
+                             @{ count++; }
+                         </div>
+                         <div class="event-row">
+                             @{ var date = item!.EventDate.ToShortDateString(); }
+                             @Html.DisplayFor(modelItem => date)
+                         </div>
+                         <div class="event-row">
+                             <a asp-action="Create" asp-route-id="@item!.Id">OSAVÕTJAD</a>
+                         </div>
+                         <div>
+                             <form asp-action="DeleteConfirmed" asp-route-id="@item!.Id"
+                                   onclick="return confirm('Olete kindel, et soovite seda üritust kustutada?')">
+                                 <button id="deleteButton" type="submit">
+                                     <a class="fa fa-trash"></a>
+                                 </button>
+                             </form>
+
+                         </div>
+
+                     }
+                     <div class="event-name" style="padding-top: 1rem">
+                         <a asp-controller="Events" asp-action="Create">LISA ÜRITUS</a>
+                     </div>
+                 </div>
+
+
+             </div>
+
+
+
+         </div>
+     <div style="width: 50%;  float: left; padding-left: 1rem;">
+         <div class="main-headers">
+             Toimunud üritused
+         </div>
+
+         <div class="create-box">
+             @foreach (var item in Model.PreviousEvents!)
+             {
+                 <div class="row">
+                     <div class="event-name " style="width: 60%;">
+                         @eventCount. @Html.DisplayFor(modelItem => item!.EventName)
+                         @{ eventCount++; }
+                     </div>
+                     <div class="event-row">
+                         @{ var date = item!.EventDate.ToShortDateString(); }
+                         @Html.DisplayFor(modelItem => date)
+                     </div>
+                     <div class="event-row">
+                         <a asp-action="Create" asp-route-id="@item!.Id">OSAVÕTJAD</a>
+                     </div>
+                 </div>
+
+
+             }
+         </div>
+
+     </div>
+</div>
+

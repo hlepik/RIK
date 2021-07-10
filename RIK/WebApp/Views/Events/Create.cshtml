@@ -1,0 +1,87 @@
+@model DAL.App.DTO.Event
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div>
+     <div class="main-title">
+         <p class="main-headers">
+               Ürituse lisamine
+         </p>
+     </div>
+     <div  class="cropped" >
+            <img src="~/libled.jpg"  >
+     </div>
+</div>
+
+<div class="create-box">
+    <form asp-action="Create">
+            <dl class="row">
+              <dt class="col-sm-12">
+                 Ürituse lisamine
+              </dt>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <dt class="col-sm-4">
+                    <label asp-for="EventName" class="control-label"></label>:
+                </dt>
+                <dd class = "col-sm-6">
+                    <input asp-for="EventName" class="form-control" />
+                    <span asp-validation-for="EventName" class="text-danger"></span>
+
+                </dd>
+
+                <dt class = "col-sm-4">
+
+                    <label asp-for="EventDate" class="control-label"></label>:
+                </dt>
+                <dd class = "col-sm-6">
+                    <input asp-for="EventDate" class="form-control" />
+                    <span asp-validation-for="EventDate" class="text-danger"></span>
+                @{
+                    if (Model != null)
+                    {
+                        if (Model.EventDate < DateTime.Today)
+                        {
+                            <span class="text-danger">Kuupäev on juba möödas. Palun valige uus kuupäev!</span>
+
+                        }
+                    }
+
+                 }
+                </dd>
+                <dt class = "col-sm-4">
+                      <label asp-for="Location" class="control-label"></label>:
+                </dt>
+                <dd class = "col-sm-6">
+                  <input asp-for="Location" class="form-control" />
+                  <span asp-validation-for="Location" class="text-danger"></span>
+
+                </dd>
+                <dt class = "col-sm-4">
+                    <label asp-for="Comment" class="control-label"></label>:
+                </dt>
+                <dd class = "col-sm-6">
+                    <textarea  asp-for="Comment" class="form-control" ></textarea>
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </dd>
+                <dt class = "col-sm-12">
+
+                    <div class="form-group">
+                        <a asp-action="Index" class="btn btn-secondary">Tagasi</a>
+                         <input type="submit" value="Lisa" class="btn btn-primary" />
+                    </div>
+
+                </dt>
+
+            </dl>
+
+        </form>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

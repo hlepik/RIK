@@ -1,0 +1,187 @@
+@model ParticipantsViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+@if (Model.Event!.EventDate < DateTime.Today)
+{
+    <partial name="Details" model="Model"/>
+
+
+}
+else
+{
+    <partial name="Details" model="Model"/>
+<dt class="create-box">
+        <form asp-action="Create">
+            <input asp-for="Event!.Id" type="hidden">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <dl class="row">
+            <dt class="col-sm-12">
+                Osavõtjate lisamine
+            </dt>
+
+                <dt class="radioButtons">
+
+                    @Html.RadioButtonFor(model => model.IsPerson, "false")&nbsp; Eraisik
+                    &nbsp;
+                    @Html.RadioButtonFor(model => model.IsPerson, "true")&nbsp; Ettevõte
+                </dt>
+
+            @section scripts{
+                <script type="text/javascript">
+
+               $(function () {
+                   $("input:radio").on("change", function () {
+
+                       if ($(this).val() === "false" ) {
+                           $('#person').show();
+                           $('#company').hide();
+                       } else  if ($(this).val() === "true" ) {
+                           $('#person').hide();
+                           $('#company').show();
+                       }
+                   });
+               });
+
+           </script>
+            }
+               </dl>
+        </form>
+        <form asp-action="Create">
+            <dl class="row"  id="person">
+                <input asp-for="Event!.Id" type="hidden">
+                   <input asp-for="Event!.EventName" type="hidden">
+                      <input asp-for="Event!.Location" type="hidden">
+                <dt class="col-sm-4">
+                        <label asp-for="Person!.FirstName" class="control-label"></label>:
+                    </dt>
+                    <dd class = "col-sm-6">
+                        <input asp-for="Person!.FirstName" class="form-control" />
+                        <span asp-validation-for="Person!.FirstName" class="text-danger"></span>
+
+                    </dd>
+                    <dt class = "col-sm-4">
+                        <label asp-for="Person!.LastName" class="control-label"></label>:
+                    </dt>
+                    <dd class = "col-sm-6">
+                        <input asp-for="Person!.LastName" class="form-control" />
+                        <span asp-validation-for="Person!.LastName" class="text-danger"></span>
+
+                    </dd>
+                    <dt class = "col-sm-4">
+                        <label asp-for="Person!.IdentificationCode" class="control-label"></label>:
+                    </dt>
+                    <dd class = "col-sm-6">
+                        <input asp-for="Person!.IdentificationCode" class="form-control" />
+                        <span asp-validation-for="Person!.IdentificationCode" class="text-danger"></span>
+
+                    </dd>
+                    <dt class = "col-sm-4">
+                        <label asp-for="Person!.PaymentType" class="control-label"></label>:
+                    </dt>
+
+
+                    <dd class = "col-sm-6">
+                        <select class="form-control" asp-for="Person!.PaymentType">
+                            <option selected="selected" value="a">---Vali---</option>
+                            <option value="0">Sularaha</option>
+                            <option value="1">Ülekanne</option>
+                        </select>
+
+                        <span asp-validation-for="Company!.PaymentType" class="text-danger"></span>
+
+
+                    </dd>
+
+                    <dt class = "col-sm-4">
+                        <label asp-for="Person!.Comment" class="control-label"></label>:
+                    </dt>
+                    <dd class = "col-sm-6">
+                        <textarea  asp-for="Person!.Comment" class="form-control" ></textarea>
+                        <span asp-validation-for="Person!.Comment" class="text-danger"></span>
+                    </dd>
+                    <dt class = "col-sm-12">
+
+                        <div class="form-group">
+                            <a asp-action="Index" class="btn btn-secondary">Tagasi</a>
+                            <input type="submit" value="Salvesta" class="btn btn-primary" />
+                        </div>
+
+                    </dt>
+
+                </dl>
+        </form>
+
+<form asp-action="Create">
+    <dl class="row"  id="company" style="display:none">
+
+
+        <input asp-for="Event!.Id" type="hidden">
+        <input asp-for="Event!.EventName" type="hidden">
+        <input asp-for="Event!.Location" type="hidden">
+
+
+        <dt class="col-sm-4">
+            <label asp-for="Company!.CompanyName" class="control-label"></label>:
+        </dt>
+        <dd class = "col-sm-6">
+            <input asp-for="Company!.CompanyName" class="form-control" />
+            <span asp-validation-for="Company!.CompanyName" class="text-danger"></span>
+
+        </dd>
+        <dt class = "col-sm-4">
+            <label asp-for="Company!.RegisterCode" class="control-label"></label>:
+        </dt>
+        <dd class = "col-sm-6">
+            <input asp-for="Company!.RegisterCode" class="form-control" />
+            <span asp-validation-for="Company!.RegisterCode" class="text-danger"></span>
+
+        </dd>
+        <dt class = "col-sm-4">
+            <label asp-for="Company!.PeopleCount" class="control-label"></label>:
+        </dt>
+        <dd class = "col-sm-6">
+            <input asp-for="Company!.PeopleCount" min="1" class="form-control" />
+            <span asp-validation-for="Company!.PeopleCount" class="text-danger"></span>
+
+        </dd>
+        <dt class = "col-sm-4">
+            <label asp-for="Company!.PaymentType" class="control-label"></label>:
+        </dt>
+
+        <dd class = "col-sm-6">
+            <select class="form-control" asp-for="Company!.PaymentType">
+                <option selected="selected" value="a">---Vali---</option>
+                <option value="0">Sularaha</option>
+                <option value="1">Ülekanne</option>
+            </select>
+
+            <span asp-validation-for="Company!.PaymentType" class="text-danger"></span>
+
+
+        </dd>
+
+        <dt class = "col-sm-4">
+            <label asp-for="Company!.Comment" class="control-label"></label>:
+        </dt>
+        <dd class = "col-sm-6">
+            <textarea  asp-for="Company!.Comment" class="form-control" ></textarea>
+            <span asp-validation-for="Company!.Comment" class="text-danger"></span>
+        </dd>
+        <dt class = "col-sm-12">
+
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary">Tagasi</a>
+                <input type="submit" value="Salvesta" class="btn btn-primary" />
+            </div>
+
+        </dt>
+
+    </dl>
+</form>
+</dt>
+
+}
+
